@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Тестовая задача</title>
+  </head>
+  <body>
+    <main role="main" class="container">
+      {% if user %}
+      <h1 class="mt-5">Здравствуйте, {{ user.first_name }} {{ user.last_name }} </h1>
+      {% if friends_list|length == count  %}
+      <p class="lead">вот список ваших друзей [ {{ count }} ]  :</p>
+      {% else %}
+      <p class="lead">вот некоторые из ваших друзей [ {{ friends_list|length }} из {{ count }} ]  :</p>
+      {% endif %}
+      <ul>
+          {% for friend in friends_list %}
+              <li>{{ friend.first_name }} {{ friend.last_name }}</li>
+          {% endfor %}
+      </ul>
+      {% else %}
+      <p><br>
+      <a class="btn btn-primary" href="/getcode">авторизоваться</a>
+      </p>
+      {% endif %}
+    </main>
+  </body>
+</html>
